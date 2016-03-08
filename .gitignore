@@ -1,0 +1,10 @@
+##Ignore Node Modules
+node_modules
+
+##Ignore NPM Debugging
+npm-debug.log
+
+##Ignore Visual Studio Code
+.vscode
+
+##Ignore Uploads Folder
