@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-var http = require('http');
 
 //Temp Global Variable
 var files = new Array();
