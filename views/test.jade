@@ -3,7 +3,7 @@ extends layout
 block content
     h1 Uploaded!
     h3 Upload Another!
-    form(method='POST', action='/uploadFile' enctype='multipart/form-data')
+    form(method='POST', action='/fileUpload' enctype='multipart/form-data')
         
         input(type='file', name='theFile')
         input(type='submit' name='Upload')
@@ -14,5 +14,5 @@ block content
             li #{file.filename} is in position #{i} 
                 a(href="/deleteFile/#{file._id}")
                     i.fa.fa-close.fa-lg
-                a(href="'downloadFile/#{file._id}")
+                a(href="/downloadFile/#{file._id}")
                     i.fa.fa-arrow-down.fa-lg

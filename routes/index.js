@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var http = require('http');
 
 //Temp Global Variable
 var files = new Array();
@@ -14,7 +15,7 @@ router.get('/uploadFile', function (req,res,next){
    res.render('uploadFile'); 
 });
 
-router.post('/uploadFile', function (req,res,next){
+router.post('/fileUpload', function (req,res,next){
    //File had been uploaded
    
    console.log(req.files[0].filename);
@@ -37,6 +38,7 @@ router.get('/test', function (req,res,next){
    res.render('test'); 
 });
 
+//Deletes file
 router.get('/deleteFile/:fileID', function(req,res,next){
     console.log("Just testing to delete " + req.params.fileID);
     
@@ -47,6 +49,19 @@ router.get('/deleteFile/:fileID', function(req,res,next){
                 //Do nothing
             });
             files.splice(x,1);
+            break;
+        }
+    }
+    
+    res.redirect('/files')
+});
+
+//Deletes file
+router.get('/downloadFile/:fileID', function(req,res,next){
+    console.log("Just testing to delete " + req.params.fileID);
+    for (var x = 0; x < files.length; x++){
+        if (files[x]._id == req.params.fileID){
+            var downloadThis = fs.createWriteStream(files[x].filename);
             break;
         }
     }
